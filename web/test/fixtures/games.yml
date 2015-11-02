@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  gridsize: 1
+  positions: MyText
+
+two:
+  gridsize: 1
+  positions: MyText
