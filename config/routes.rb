@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get 'game/index'
-
-  get 'game/play'
+  sockets_for :games
+  post 'games/play'
+  post 'games/update_move'
+  post 'game/drop_game'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
