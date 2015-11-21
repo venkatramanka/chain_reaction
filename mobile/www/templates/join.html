@@ -1,0 +1,25 @@
+<ion-view view-title="Join Game">
+  <ion-content class="padding">
+    <form ng-submit="joinGame(profile)">
+      <div class="list card">
+        <label class="item item-input">
+          <span class="input-label">Nickname</span>
+          <input type="text" ng-model="profile.name">
+        </label>
+      </div>
+      <div class="list card">
+        <label class="item item-input">
+          <span class="input-label">Game ID</span>
+          <input type="text" ng-model="profile.key">
+        </label>
+      </div>
+      <div class="row">
+        <div class="col col-center">
+          <button class="button button-full button-assertive">
+            Join
+          </button>
+        </div>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

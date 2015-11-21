@@ -26,6 +26,15 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 gem 'rack-cors', :require => 'rack/cors'
+gem 'protected_attributes'
+#gem 'websocket-rails'
+gem 'websocket-rails', github: 'moaa/websocket-rails', branch: 'sync_fixes'
+gem 'thin'
+gem 'faye'
+gem 'private_pub'
+gem 'unicorn'
+gem 'puma'
+gem 'entangled'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

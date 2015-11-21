@@ -1,1 +1,89 @@
 /* Empty. Add your own CSS if you like */
+.grid{
+	width: 95vw;
+}
+.gridCol {
+  border: solid 1px grey;
+  border-bottom-style: none;
+  border-right-style: none;
+  /*width: 20%;*/
+}
+.gridRow{
+}
+.gridCol:last-child {
+  border-right: solid 1px grey;
+}
+
+.gridRow:last-child .gridCol {
+  border-bottom: solid 1px grey;
+}
+
+.circ{
+	/*display: table-caption;*/
+	padding-left: 1%;
+	padding-top: 3%;
+	margin-right: 30%;
+}
+
+.circle {
+	border-radius:100%;
+	padding: 40%;
+	margin: -30%;
+    width: 35%;
+    height: 40%;
+}
+
+.single_circle{
+	margin-left: 40%;
+	margin-top: 40%;
+	width: 100%;
+	height: 100%;
+}
+
+.double_circle{
+	margin-left: 30%;
+	margin-top: 20%;
+	width: 70%;
+	height: 70%;
+}
+.triple_circle{
+	margin-left: 25%;
+	margin-top: 25%;
+	width: 60%;
+	height: 60%;
+}
+
+.Red{
+	background:url(../img/red.GIF);
+    background-size: cover;
+}
+.Green{
+	background:url(../img/green.GIF);
+    background-size: cover;
+}
+.Orange{
+    background:url(../img/orange.GIF);
+    background-size: cover;
+}
+.White{
+   background:url(../img/white.GIF);
+   background-size: cover;
+}
+.Blue{
+    background:url(../img/blue.GIF);
+    background-size: cover;
+    /*background-size: cover;*/
+}
+
+
+.spinning{
+
+    -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
+	
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotateX(360deg); -moz-transform: rotateY(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotateX(360deg); -webkit-transform: rotateY(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotateX(360deg); transform:rotateZ(360deg); } }

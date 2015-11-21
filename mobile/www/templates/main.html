@@ -1,0 +1,43 @@
+<ion-view view-title="Create Game">
+  <ion-content class="padding">
+    <form ng-submit="startGame(profile)">
+      <div class="list card">
+        <label class="item item-input">
+          <span class="input-label">Nickname</span>
+          <input type="text" ng-model="profile.name">
+        </label>
+      </div>
+      <div class="list card">
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Color
+          </div>
+          <select ng-model="profile.colour" ng-init="profile.colour='Blue'">
+            <option>Blue</option>
+            <option>Green</option>
+            <option>Red</option>
+          </select>
+        </label>
+      </div>
+      <div class="list card">
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Grid size
+          </div>
+          <select ng-model="profile.gridsize" ng-init="profile.gridsize='Small'">
+            <option>Small</option>
+            <option>Medium</option>
+            <option>Large</option>
+          </select>
+        </label>
+      </div>
+      <div class="row">
+        <div class="col col-center">
+          <button class="button button-full button-assertive">
+            Start
+          </button>
+        </div>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>
