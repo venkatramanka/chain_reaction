@@ -39,8 +39,9 @@ class GamesController < ApplicationController
     game = Game.find(params[:game_id])
     unless game.nil?
       players = game.players
-      players.destroy_all
-      game.destroy
+      players.first.destroy
+      players.first.destroy
+      game.delete
     end
   end
 
