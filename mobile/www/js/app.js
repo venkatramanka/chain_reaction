@@ -8,7 +8,7 @@
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ui.router', 'entangled'])
 
 .factory('Game', function(Entangled) {
-  return new Entangled('ws://192.168.42.212:3000/games');
+  return new Entangled('ws://192.168.42.141:3000/games');
 })
 
 .filter('range', function() {
@@ -82,6 +82,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         'game': {
           templateUrl: 'templates/game.html',
           controller: 'GameCtrl'
+        }
+      }
+    })
+    .state('tab.htp', {
+      url: '/htp',
+      params: {},
+      views:{
+        'htp':{
+          templateUrl: 'templates/htp.html',
         }
       }
     })

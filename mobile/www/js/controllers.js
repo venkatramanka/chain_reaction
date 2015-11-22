@@ -6,7 +6,7 @@ angular.module('starter.controllers',['ionic','ui.router', 'entangled'])
   //var gameUrl = $resource("");
   $scope.startGame = function(profile) {
     $http({
-        url: "http://192.168.42.212:3000/games/play",
+        url: "http://192.168.42.141:3000/games/play",
         method: "post",
         data: {"name" : profile.name, "gridsize": profile.gridsize, "color": profile.colour}
     }).then(function(response) {
@@ -20,9 +20,9 @@ angular.module('starter.controllers',['ionic','ui.router', 'entangled'])
         $rootScope.colour = profile.colour;
         $rootScope.from = 'create_game';
         $rootScope.gridsize = profile.gridsize;
-        var colors = ["Red", "Green", "Blue"];
+        var colors = ["Red", "Green", "Blue", "Orange"];
         var pl1Color = colors.indexOf(profile.colour);
-        $rootScope.opponentColor = colors[(pl1Color+1)%3];
+        $rootScope.opponentColor = colors[(pl1Color+1)%4];
         $state.go('tab.game', {});
     });
     // gameUrl.get({name : profile.name, gridsize: profile.gridsize, color: profile.colour},function(response){
@@ -35,7 +35,7 @@ angular.module('starter.controllers',['ionic','ui.router', 'entangled'])
 
   $scope.joinGame = function(profile) {
     $http({
-        url: "http://192.168.42.212:3000/games/play",
+        url: "http://192.168.42.141:3000/games/play",
         method: "post",
         data: {"name" : profile.name, "key": profile.key}
     }).then(function(response) {
@@ -47,9 +47,9 @@ angular.module('starter.controllers',['ionic','ui.router', 'entangled'])
         $rootScope.colour = response.data['color'];
         $rootScope.from = 'join_game';
         $rootScope.gridsize = response.data['gridsize'];
-        var colors = ["Red", "Green", "Blue"];
+        var colors = ['Red','Green','Blue','Orange']
         var pl1Color = colors.indexOf(response.data['color']);
-        $rootScope.opponentColor = colors[(pl1Color+1)%3];
+        $rootScope.opponentColor = colors[(pl1Color-1)%4];
         $state.go('tab.game', {});
     });
     // gameUrl.get({name : profile.name, gridsize: profile.gridsize, color: profile.colour},function(response){
@@ -88,7 +88,11 @@ angular.module('starter.controllers',['ionic','ui.router', 'entangled'])
                 if(game.winner != null){
                     $ionicLoading.hide();
                     alert("Oops! You've lost the game");
-                    $state.go('tab.main', {});   
+                    $state.go('tab.main', {});
+                    $ionicHistory.clearHistory();
+                    setTimeout(function (){
+                        $window.location.reload(true);
+                    }, 100);
                 }
                 else if(game.lastTouch != null){
                     rotateGridAndMove(parseInt(game.lastTouch.split("-")[0]), parseInt(game.lastTouch.split("-")[1]), $rootScope.opponentColor, $scope.rowsize, $scope.colsize, $scope.game.positions, 'opponent', 360).then(hideLoading(parseInt(game.lastTouch.split("-")[0]), parseInt(game.lastTouch.split("-")[1])));
@@ -240,13 +244,17 @@ angular.module('starter.controllers',['ionic','ui.router', 'entangled'])
         if($scope.game.positions['['+row+', '+col+']']["color"] == null || $scope.game.positions['['+row+', '+col+']']["color"] == $rootScope.colour){
             rotateGridAndMove(row, col, $rootScope.colour, $scope.rowsize, $scope.colsize, $scope.game.positions, 'self', -360);
             $http({
-                url: "http://192.168.42.212:3000/games/update_move",
+                url: "http://192.168.42.141:3000/games/update_move",
                 method: "post",
                 data: {"game_id" : $rootScope.gameId, "player_id": $rootScope.playerId, "cell": row+'-'+col, "positions": $scope.game.positions}
             }).then(function(response) {
                 if(response.data == 'won'){
                     alert("Congrats! You've won the game!");
                     $state.go('tab.main',{});
+                    $ionicHistory.clearHistory();
+                    setTimeout(function (){
+                        $window.location.reload(true);
+                    }, 100);
                 }
                 else{
                     $ionicLoading.show({
@@ -260,23 +268,6 @@ angular.module('starter.controllers',['ionic','ui.router', 'entangled'])
             });
         }
     };
-
-    function drawFirstCircle(el, type, pl){
-      var player = parseInt(pl);
-      $(el).children('.circ').remove();
-      if(type == "corner"){
-        $(el).html($());
-      }
-      else{
-        $(el).html($("<div class='circ circle "+color[player]+"' style='position:absolute; left:25%;top:25%' value="+player+"></div>"));
-      }
-    }
-    function getTwoCircles(player){
-      return "<div class='circ double_circle' value="+player+"><div class='circle' style='position:absolute;left:15%;top:25%'></div><div class='circle' style='position:absolute;right:15%;top:25%'></div></div"
-    }
-    function getThreeCircles(player){
-      return "<div class='circ triple_circle' value="+player+"><div class='circle' style='position:absolute;left:15%;top:20%'></div><div class='circle' style='position:absolute;right:15%;top:20%'></div><div class='circle' style='position:absolute;bottom:20%;right:25%'></div></div"
-    }
     
 })
 
