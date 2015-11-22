@@ -43,7 +43,6 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
-    addressable (2.3.8)
     arel (5.0.1.20140414130214)
     awrence (0.1.0)
     builder (3.2.2)
@@ -55,16 +54,7 @@ GEM
       execjs
     coffee-script-source (1.9.1.1)
     connection_pool (2.2.0)
-    cookiejar (0.3.2)
     daemons (1.2.3)
-    em-http-request (1.1.2)
-      addressable (>= 2.3.4)
-      cookiejar
-      em-socksify (>= 0.3)
-      eventmachine (>= 1.0.3)
-      http_parser.rb (>= 0.6.0)
-    em-socksify (0.3.1)
-      eventmachine (>= 1.0.0.beta.4)
     em-synchrony (1.0.4)
       eventmachine (>= 1.0.0.beta.1)
     entangled (1.5.0)
@@ -76,20 +66,11 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.8)
     execjs (2.6.0)
-    faye (1.1.2)
-      cookiejar (>= 0.3.0)
-      em-http-request (>= 0.3.0)
-      eventmachine (>= 0.12.0)
-      faye-websocket (>= 0.9.1)
-      multi_json (>= 1.0.0)
-      rack (>= 1.0.0)
-      websocket-driver (>= 0.5.1)
     faye-websocket (0.10.1)
       eventmachine (>= 0.12.0)
       websocket-driver (>= 0.5.1)
     hike (1.2.3)
     hiredis (0.6.0)
-    http_parser.rb (0.6.0)
     i18n (0.7.0)
     jbuilder (2.3.2)
       activesupport (>= 3.0.0, < 5)
@@ -98,7 +79,6 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.3)
-    kgio (2.10.0)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     mime-types (2.6.2)
@@ -107,8 +87,6 @@ GEM
     mysql (2.9.1)
     plissken (0.2.0)
       symbolize (~> 4.2)
-    private_pub (1.0.3)
-      faye
     protected_attributes (1.1.3)
       activemodel (>= 4.0.1, < 5.0)
     puma (2.15.3)
@@ -131,7 +109,6 @@ GEM
       activesupport (= 4.1.13)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    raindrops (0.15.0)
     rake (10.4.2)
     rdoc (4.2.0)
       json (~> 1.4)
@@ -178,10 +155,6 @@ GEM
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    unicorn (5.0.0)
-      kgio (~> 2.6)
-      rack
-      raindrops (~> 0.7)
     websocket (1.2.2)
     websocket-driver (0.6.3)
       websocket-extensions (>= 0.1.0)
@@ -193,11 +166,9 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   entangled
-  faye
   jbuilder (~> 2.0)
   jquery-rails
   mysql
-  private_pub
   protected_attributes
   puma
   rack-cors
@@ -205,8 +176,6 @@ DEPENDENCIES
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   spring
-  thin
   turbolinks
   uglifier (>= 1.3.0)
-  unicorn
   websocket-rails!
