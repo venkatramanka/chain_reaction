@@ -1,1 +1,1 @@
-$redis = Redis.new(:url => 'redis://redistogo:dddb24cde23ae5519646a7d4b644611a@herring.redistogo.com:9792/')
+$redis = Redis.new(:url => 'redis://pub-redis-18546.us-east-1-2.4.ec2.garantiadata.com:18546')
