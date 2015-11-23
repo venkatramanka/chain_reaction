@@ -1,1 +1,1 @@
-$redis = Redis.new(:url => 'redis://pub-redis-18546.us-east-1-2.4.ec2.garantiadata.com:18546')
+$redis = Redis.new(:url => 'redis://pub-redis-18546.us-east-1-2.4.ec2.garantiadata.com:18546', :inherit_socket => true)

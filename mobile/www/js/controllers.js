@@ -2,9 +2,10 @@
 
 angular.module('starter.controllers',['ionic','ui.router', 'entangled'])
 
-.controller('MainCtrl', function($scope, $http, $state, $rootScope) {
+.controller('MainCtrl', function($scope, $http, $state, $rootScope, $ionicHistory) {
   //var gameUrl = $resource("");
   $scope.startGame = function(profile) {
+
     $http({
         url: "https://calm-peak-1928.herokuapp.com/games/play",
         method: "post",
@@ -23,7 +24,7 @@ angular.module('starter.controllers',['ionic','ui.router', 'entangled'])
         var colors = ["Red", "Green", "Blue", "Orange"];
         var pl1Color = colors.indexOf(profile.colour);
         $rootScope.opponentColor = colors[(pl1Color+1)%4];
-        $state.go('tab.game', {});
+        $ionicHistory.clearCache().then($ionicHistory.clearHistory()).then(function(){ $state.go('tab.game', {})});
     });
     // gameUrl.get({name : profile.name, gridsize: profile.gridsize, color: profile.colour},function(response){
     //   alert(response.data);
@@ -31,7 +32,7 @@ angular.module('starter.controllers',['ionic','ui.router', 'entangled'])
   };
 })
 
-.controller('JoinCtrl', function($scope, $http, $rootScope, $state) {
+.controller('JoinCtrl', function($scope, $http, $rootScope, $state, $ionicHistory) {
 
   $scope.joinGame = function(profile) {
     $http({
@@ -50,7 +51,7 @@ angular.module('starter.controllers',['ionic','ui.router', 'entangled'])
         var colors = ['Red','Green','Blue','Orange']
         var pl1Color = colors.indexOf(response.data['color']);
         $rootScope.opponentColor = colors[(pl1Color-1)%4];
-        $state.go('tab.game', {});
+        $ionicHistory.clearCache().then($ionicHistory.clearHistory()).then(function(){ $state.go('tab.game', {})});
     });
     // gameUrl.get({name : profile.name, gridsize: profile.gridsize, color: profile.colour},function(response){
     //   alert(response.data);
