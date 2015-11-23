@@ -12,7 +12,7 @@ class GamesController < ApplicationController
   		player = Player.create(name: params[:name], color: params[:color], status: 'waiting for opponent', game_id: game.id)
       response_data = {key: random_string, action: 'wait', player_id: player.id, game_id: game.id}
     else
-  		game = Game.find_by_key(key)
+  		game = Game.find_by_key(key.to_s)
       player1 = game.players.first
       color = colors_list[(colors_list.index(player1.color)+1)%4]
   		player = Player.create(name: params[:name], color: color, status: 'joining', game_id: game.id)
