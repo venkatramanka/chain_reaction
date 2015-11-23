@@ -1,0 +1,1 @@
+$redis = Redis.new(:url => 'redis://redistogo:dddb24cde23ae5519646a7d4b644611a@herring.redistogo.com:9792/', inherit_socket: true)
