@@ -8,7 +8,7 @@
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ui.router', 'entangled'])
 
 .factory('Game', function(Entangled) {
-  return new Entangled('ws://192.168.42.141:3000/games');
+  return new Entangled('ws://polar-peak-5529.herokuapp.com/games');
 })
 
 .filter('range', function() {

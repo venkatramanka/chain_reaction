@@ -6,7 +6,7 @@ angular.module('starter.controllers',['ionic','ui.router', 'entangled'])
   //var gameUrl = $resource("");
   $scope.startGame = function(profile) {
     $http({
-        url: "http://192.168.42.141:3000/games/play",
+        url: "https://polar-peak-5529.herokuapp.com/games/play",
         method: "post",
         data: {"name" : profile.name, "gridsize": profile.gridsize, "color": profile.colour}
     }).then(function(response) {
@@ -35,7 +35,7 @@ angular.module('starter.controllers',['ionic','ui.router', 'entangled'])
 
   $scope.joinGame = function(profile) {
     $http({
-        url: "http://192.168.42.141:3000/games/play",
+        url: "https://polar-peak-5529.herokuapp.com/games/play",
         method: "post",
         data: {"name" : profile.name, "key": profile.key}
     }).then(function(response) {
@@ -244,7 +244,7 @@ angular.module('starter.controllers',['ionic','ui.router', 'entangled'])
         if($scope.game.positions['['+row+', '+col+']']["color"] == null || $scope.game.positions['['+row+', '+col+']']["color"] == $rootScope.colour){
             rotateGridAndMove(row, col, $rootScope.colour, $scope.rowsize, $scope.colsize, $scope.game.positions, 'self', -360);
             $http({
-                url: "http://192.168.42.141:3000/games/update_move",
+                url: "https://polar-peak-5529.herokuapp.com/games/update_move",
                 method: "post",
                 data: {"game_id" : $rootScope.gameId, "player_id": $rootScope.playerId, "cell": row+'-'+col, "positions": $scope.game.positions}
             }).then(function(response) {
